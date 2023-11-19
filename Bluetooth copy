@@ -1,0 +1,34 @@
+#include <SoftwareSerial.h>
+SoftwareSerial bluetooth(10, 11); // RX, TX
+int ledPin1 = 2;
+int ledPin2 = 3;
+int ledPin3 = 4;
+int ledPin4 = 5;
+void setup() {
+ pinMode(ledPin1, OUTPUT);
+ pinMode(ledPin2, OUTPUT);
+ pinMode(ledPin3, OUTPUT);
+ pinMode(ledPin4, OUTPUT);
+ // Serial communication with Bluetooth module
+ Serial.begin(9600);
+ bluetooth.begin(9600);
+}
+void loop() {
+ if (bluetooth.available() > 0) {
+ char command = bluetooth.read();
+ // Turn on all LEDs
+ if (command == '1') {
+ digitalWrite(ledPin1, HIGH);
+ digitalWrite(ledPin2, HIGH);
+ digitalWrite(ledPin3, HIGH);
+ digitalWrite(ledPin4, HIGH);
+ }
+ // Turn off all LEDs
+ else if (command == '0') {
+ digitalWrite(ledPin1, LOW);
+ digitalWrite(ledPin2, LOW);
+ digitalWrite(ledPin3, LOW);
+ digitalWrite(ledPin4, LOW);
+ }
+ }
+}
