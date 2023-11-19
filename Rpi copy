@@ -63,3 +63,39 @@ except KeyboardInterrupt:
     # Clean up GPIO on program exit
     GPIO.cleanup()
 
+ti count 
+import RPi.GPIO as GPIO
+import time
+
+# Set the GPIO mode to BCM
+GPIO.setmode(GPIO.BCM)
+
+# Define the GPIO pin connected to the IR sensor
+ir_sensor_pin = 17  # BCM pin 17 corresponds to physical pin 11
+
+# Setup the GPIO pin as an input
+GPIO.setup(ir_sensor_pin, GPIO.IN)
+
+# Initialize person count
+person_count = 0
+
+try:
+    while True:
+        # Read the digital output of the IR sensor
+        ir_sensor_status = GPIO.input(ir_sensor_pin)
+
+        if ir_sensor_status == GPIO.HIGH:
+            # Increment person count when an obstacle is detected
+            person_count += 1
+            print(f"Person Detected! Total Persons: {person_count}")
+
+            # Add a short delay to avoid counting the same person multiple times
+            time.sleep(2)
+
+        # Wait for a short duration before reading again
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    # Clean up GPIO on program exit
+    GPIO.cleanup()
+
