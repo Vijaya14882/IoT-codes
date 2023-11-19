@@ -1,0 +1,65 @@
+import RPi.GPIO as GPIO
+import time
+
+# Set the GPIO mode to BCM
+GPIO.setmode(GPIO.BCM)
+
+# Define the GPIO pin connected to the IR sensor
+ir_sensor_pin = 17  
+# BCM pin 17 corresponds to physical pin 11
+
+# Setup the GPIO pin as an input
+GPIO.setup(ir_sensor_pin, GPIO.IN)
+
+try:
+    while True:
+        # Read the digital output of the IR sensor
+        ir_sensor_status = GPIO.input(ir_sensor_pin)
+
+        if ir_sensor_status == GPIO.HIGH:
+            print("IR Sensor Detected: Obstacle is Present")
+        else:
+            print("IR Sensor Not Detected: No Obstacle")
+
+        # Wait for a short duration before reading again
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    # Clean up GPIO on program exit
+    GPIO.cleanup()
+
+
+
+
+
+
+
+import RPi.GPIO as GPIO
+import time
+
+# Set the GPIO mode
+GPIO.setmode(GPIO.BCM)
+
+# Define the GPIO pin connected to the IR sensor
+ir_sensor_pin = 17
+
+# Setup the GPIO pin as an input
+GPIO.setup(ir_sensor_pin, GPIO.IN)
+
+try:
+    while True:
+        # Read the digital output of the IR sensor
+        ir_sensor_status = GPIO.input(ir_sensor_pin)
+
+        if ir_sensor_status == GPIO.HIGH:
+            print("IR Sensor Detected: Obstacle is Present")
+        else:
+            print("IR Sensor Not Detected: No Obstacle")
+
+        # Wait for a short duration before reading again
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    # Clean up GPIO on program exit
+    GPIO.cleanup()
+
