@@ -1,0 +1,19 @@
+#include <LiquidCrystal.h>
+// Initialize the LCD with the appropriate pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+void setup() {
+ // Set up the LCD columns and rows
+ lcd.begin(16, 2);
+}
+void loop() {
+ // Clear the LCD screen
+ lcd.clear();
+ // Display your name on the first line
+ lcd.setCursor(0, 0);
+ lcd.print("Your Name");
+ // Display your roll number on the second line
+ lcd.setCursor(0, 1);
+ lcd.print("Roll Number");
+ // Delay for a while before clearing the screen again
+ delay(2000);
+}
