@@ -87,7 +87,7 @@ try:
         if ir_sensor_status == GPIO.HIGH:
             # Increment person count when an obstacle is detected
             person_count += 1
-            print(f"Person Detected! Total Persons: {person_count}")
+            print("Person Detected! Total Persons: {person_count}")
 
             # Add a short delay to avoid counting the same person multiple times
             time.sleep(2)
